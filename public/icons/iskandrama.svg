@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" rx="24" fill="#09090b" />
+  <rect x="2" y="2" width="96" height="96" rx="22" fill="none" stroke="#0d9488" stroke-width="4" stroke-opacity="0.4" />
+  <!-- Screen / Monitor -->
+  <rect x="20" y="25" width="60" height="42" rx="6" fill="#18181b" stroke="#14b8a6" stroke-width="3" />
+  <!-- Stand -->
+  <path d="M 40 67 L 60 67 M 50 67 L 50 76 M 35 76 L 65 76" stroke="#14b8a6" stroke-width="3" stroke-linecap="round" />
+  <!-- Play Triangle -->
+  <polygon points="45,36 62,46 45,56" fill="#2dd4bf" />
+</svg>

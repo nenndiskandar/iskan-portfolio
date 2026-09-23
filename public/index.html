@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full antialiased dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Iskan - Software Engineer & Builder</title>
+  <meta name="description" content="Portal web & portofolio Iskan. Spesialis pengolahan video AI, streaming infrastructure, dan web modern.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Hide scrollbar for clean tab scrolling on mobile */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="flex h-full flex-col bg-zinc-50 text-zinc-800 antialiased dark:bg-black dark:text-zinc-200 overflow-x-hidden">
+  <!-- Container background ring Spotlight style -->
+  <div class="fixed inset-0 flex justify-center px-0 sm:px-6 lg:px-8 pointer-events-none z-0">
+    <div class="flex w-full max-w-7xl">
+      <div class="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
+    </div>
+  </div>
+
+  <div class="relative z-10 flex w-full flex-col min-h-screen">
+    <!-- Header (Non-sticky, in-flow, clean & mobile-friendly) -->
+    <header class="w-full pt-5 pb-3">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-4">
+          
+          <!-- Avatar / Logo -->
+          <div class="flex items-center">
+            <a href="#about" class="group flex items-center gap-2.5 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-teal-500 rounded-full">
+              <div class="h-9 w-9 rounded-full bg-teal-500/10 p-0.5 ring-1 ring-teal-500/30 flex items-center justify-center font-bold text-teal-600 dark:text-teal-400 text-sm">
+                IK
+              </div>
+              <span class="font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-teal-500 transition text-base">
+                Iskan
+              </span>
+            </a>
+          </div>
+
+          <!-- Desktop Navigation & Theme Toggle -->
+          <div class="flex items-center gap-2 sm:gap-4">
+            <nav class="hidden sm:flex items-center gap-1 rounded-full bg-white/80 p-1 text-sm font-medium text-zinc-700 shadow-sm ring-1 ring-zinc-900/10 backdrop-blur-sm dark:bg-zinc-800/80 dark:text-zinc-200 dark:ring-white/10">
+              <a class="px-3.5 py-1.5 transition hover:text-teal-500 dark:hover:text-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-500 rounded-full" href="#about">Tentang</a>
+              <a class="px-3.5 py-1.5 transition hover:text-teal-500 dark:hover:text-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-500 rounded-full" href="#projects">Proyek</a>
+              <a class="px-3.5 py-1.5 transition hover:text-teal-500 dark:hover:text-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-500 rounded-full" href="#skills">Keahlian</a>
+              <a class="px-3.5 py-1.5 transition hover:text-teal-500 dark:hover:text-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-500 rounded-full" href="#contact">Kontak</a>
+            </nav>
+
+            <!-- Theme Toggle -->
+            <button type="button" id="theme-toggle" aria-label="Ganti Tema" class="group flex items-center justify-center min-h-[44px] min-w-[44px] rounded-full bg-white/90 p-2 shadow-sm ring-1 ring-zinc-900/10 backdrop-blur-sm transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20 focus:outline-none focus:ring-2 focus:ring-teal-500">
+              <!-- Sun Icon -->
+              <svg id="sun-icon" class="h-5 w-5 stroke-zinc-500 transition hidden dark:block text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <!-- Moon Icon -->
+              <svg id="moon-icon" class="h-5 w-5 stroke-zinc-500 transition block dark:hidden text-zinc-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation (Clean sub-bar, static in-flow, not floating) -->
+        <nav class="flex sm:hidden mt-3 pt-3 border-t border-zinc-200/60 dark:border-zinc-800/60 items-center justify-between text-xs font-medium text-zinc-600 dark:text-zinc-400">
+          <a class="py-1 px-2.5 hover:text-teal-500 dark:hover:text-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-500 rounded" href="#about">Tentang</a>
+          <a class="py-1 px-2.5 hover:text-teal-500 dark:hover:text-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-500 rounded" href="#projects">Proyek</a>
+          <a class="py-1 px-2.5 hover:text-teal-500 dark:hover:text-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-500 rounded" href="#skills">Keahlian</a>
+          <a class="py-1 px-2.5 hover:text-teal-500 dark:hover:text-teal-400 focus:outline-none focus:ring-1 focus:ring-teal-500 rounded" href="#contact">Kontak</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-auto">
+      <!-- Hero / About Section -->
+      <section id="about" class="pt-8 sm:pt-16 pb-12">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <h1 class="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl lg:text-5xl dark:text-zinc-100 leading-tight">
+              Software Engineer & Builder Sistem Otomasi Media.
+            </h1>
+            <p class="mt-4 sm:mt-6 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              Saya berfokus pada arsitektur sistem pengolahan video otomatis bertenaga AI, pemrosesan media berkecepatan tinggi, dan pengembangan aplikasi web berkinerja tinggi. Spesialisasi saya mencakup pemrosesan frame video, deteksi subjek visual, inferensi subtitle lokal, dan arsitektur infrastruktur server yang efisien.
+            </p>
+
+            <!-- Status / Badge Card -->
+            <div class="mt-5 sm:mt-6 inline-flex items-center gap-2 rounded-xl sm:rounded-full border border-teal-500/20 bg-teal-500/10 px-3 py-1.5 text-xs font-medium text-teal-700 dark:text-teal-300">
+              <span class="h-2 w-2 rounded-full bg-teal-500 shrink-0"></span>
+              <span>Aktif Membangun Auto-Clipper v2 & Infrastructure Modern</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <a href="#projects" class="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                Lihat Proyek Utama
+              </a>
+              <a href="#contact" class="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-zinc-300 px-5 py-2.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                Hubungi Saya
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="py-12 sm:py-16 border-t border-zinc-200/60 dark:border-zinc-800/60">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+              Proyek Pilihan
+            </h2>
+            <p class="mt-2 sm:mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+              Klik pada proyek untuk langsung membuka aplikasi di tab baru.
+            </p>
+          </div>
+
+          <!-- Filter Tabs (Horizontal Scrollable on Mobile) -->
+          <div class="mt-6 sm:mt-8 overflow-x-auto no-scrollbar pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div class="flex items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-3 min-w-max">
+              <button type="button" class="project-tab active inline-flex min-h-[40px] items-center px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20" data-filter="all">Semua Proyek</button>
+              <button type="button" class="project-tab inline-flex min-h-[40px] items-center px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 border border-transparent" data-filter="ai-video">AI & Media Engine</button>
+              <button type="button" class="project-tab inline-flex min-h-[40px] items-center px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 border border-transparent" data-filter="web-app">Web Streaming SPA</button>
+            </div>
+          </div>
+
+          <!-- Projects Grid -->
+          <div id="projects-grid" class="mt-8 sm:mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+            
+            <!-- Project 1: Auto-Clipper v2 -->
+            <div class="project-card group relative flex flex-col justify-between rounded-2xl border border-zinc-200/80 p-5 sm:p-6 transition hover:border-teal-500/50 hover:shadow-lg dark:border-zinc-800 dark:hover:border-teal-500/50 bg-white/60 dark:bg-zinc-900/60" data-category="ai-video">
+              <div>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 w-full">
+                  <div class="flex items-center gap-3">
+                    <!-- Project Favicon / Icon -->
+                    <img src="/icons/autoclipper.svg" alt="Auto-Clipper v2 Favicon" class="h-11 w-11 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700/60 object-cover shrink-0" />
+                    <div>
+                      <h3 class="text-base sm:text-lg font-semibold text-zinc-800 dark:text-zinc-100 group-hover:text-teal-500 transition">
+                        <a href="https://clipper.iskan.my.id/" target="_blank" rel="noopener noreferrer" class="focus:outline-none inline-flex items-center gap-1.5">
+                          <span>Auto-Clipper v2</span>
+                          <svg class="h-4 w-4 text-teal-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                      </h3>
+                      <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400">AI Short Video Engine</span>
+                    </div>
+                  </div>
+                  <span class="self-start sm:self-auto rounded-full bg-teal-500/10 px-2.5 py-1 text-[11px] font-semibold text-teal-600 dark:text-teal-400 border border-teal-500/20">
+                    Favicon Active
+                  </span>
+                </div>
+
+                <p class="mt-4 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Sistem otomasi pemotongan dan kliping video berdurasi pendek (9:16 portrait) bertenaga AI. Mengintegrasikan MediaPipe Active Speaker Tracking untuk framing wajah presisi tanpa ketergantungan YOLO, Faster-Whisper large-v3 untuk auto captioning, serta eksekusi FFmpeg ultrafast.
+                </p>
+                
+                <div class="mt-4 flex flex-wrap gap-1.5">
+                  <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Python</span>
+                  <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">MediaPipe</span>
+                  <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Faster-Whisper</span>
+                  <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">FFmpeg</span>
+                  <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Express / Node.js</span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/60 w-full flex items-center justify-between">
+                <a href="https://clipper.iskan.my.id/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-semibold text-teal-600 hover:text-teal-500 dark:text-teal-400 focus:outline-none focus:underline">
+                  <span>Buka Aplikasi Web</span>
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+                <button type="button" onclick="openModal('autoclipper')" class="inline-flex items-center min-h-[44px] px-2 text-xs font-medium text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 focus:outline-none underline">
+                  Detail Teknis
+                </button>
+              </div>
+            </div>
+
+            <!-- Project 2: Iskan Drama -->
+            <div class="project-card group relative flex flex-col justify-between rounded-2xl border border-zinc-200/80 p-5 sm:p-6 transition hover:border-teal-500/50 hover:shadow-lg dark:border-zinc-800 dark:hover:border-teal-500/50 bg-white/60 dark:bg-zinc-900/60" data-category="web-app">
+              <div>
+                <div class="flex items-center gap-3 w-full">
+                  <!-- Project Icon -->
+                  <img src="/icons/iskandrama.svg" alt="Iskan Drama Icon" class="h-11 w-11 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700/60 object-cover shrink-0" />
+                  <div>
+                    <h3 class="text-base sm:text-lg font-semibold text-zinc-800 dark:text-zinc-100 group-hover:text-teal-500 transition">
+                      <a href="https://drama.iskan.my.id/" target="_blank" rel="noopener noreferrer" class="focus:outline-none inline-flex items-center gap-1.5">
+                        <span>Iskan Drama</span>
+                        <svg class="h-4 w-4 text-teal-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                      </a>
+                    </h3>
+                    <span class="text-xs font-mono text-zinc-500 dark:text-zinc-400">Streaming Media SPA</span>
+                  </div>
+                </div>
+
+                <p class="mt-4 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Aplikasi web Single Page Application (SPA) modern untuk platform streaming serial drama Asia. Menggunakan integrasi video player berbasis ArtPlayer (MIT licensed) yang ringan, antarmuka responsif tanpa hambatan, dan manajemen rute backend yang aman.
+                </p>
+
+                <div class="mt-4 flex flex-wrap gap-1.5">
+                  <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Node.js</span>
+                  <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Express</span>
+                  <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">ArtPlayer</span>
+                  <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Tailwind CSS</span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/60 w-full flex items-center justify-between">
+                <a href="https://drama.iskan.my.id/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-semibold text-teal-600 hover:text-teal-500 dark:text-teal-400 focus:outline-none focus:underline">
+                  <span>Buka Aplikasi Web</span>
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+                <button type="button" onclick="openModal('iskandrama')" class="inline-flex items-center min-h-[44px] px-2 text-xs font-medium text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 focus:outline-none underline">
+                  Detail Teknis
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="py-12 sm:py-16 border-t border-zinc-200/60 dark:border-zinc-800/60">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+              Keahlian & Spesialisasi Teknis
+            </h2>
+            <p class="mt-2 sm:mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+              Kemampuan teknis utama yang diterapkan dalam pengelolaan sistem dan proyek produksi sehari-hari.
+            </p>
+          </div>
+
+          <div class="mt-8 sm:mt-10 grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Skill 1 -->
+            <div class="rounded-2xl border border-zinc-200/80 p-5 sm:p-6 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60">
+              <h3 class="font-semibold text-zinc-900 dark:text-zinc-100 text-base">Media & AI Processing</h3>
+              <p class="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                Otomasi pipeline FFmpeg, MediaPipe Speaker Tracking, Faster-Whisper subtitle generation, dan manipulasi frame video.
+              </p>
+            </div>
+            <!-- Skill 2 -->
+            <div class="rounded-2xl border border-zinc-200/80 p-5 sm:p-6 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60">
+              <h3 class="font-semibold text-zinc-900 dark:text-zinc-100 text-base">Backend & API Engineering</h3>
+              <p class="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                Node.js Express, Python Core, manajemen layanan background daemon, pemrosesan asinkronous, dan RESTful API.
+              </p>
+            </div>
+            <!-- Skill 3 -->
+            <div class="rounded-2xl border border-zinc-200/80 p-5 sm:p-6 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60">
+              <h3 class="font-semibold text-zinc-900 dark:text-zinc-100 text-base">Frontend & Streaming UI</h3>
+              <p class="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                Aplikasi Single Page (SPA), Tailwind CSS, integrasi ArtPlayer, dan desain antarmuka responsif ramah seluler.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-12 sm:py-16 border-t border-zinc-200/60 dark:border-zinc-800/60 mb-8">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="rounded-3xl border border-zinc-200/80 p-6 sm:p-10 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+              Mari Terhubung
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-xl leading-relaxed">
+              Tertarik untuk berkolaborasi dalam proyek pengolahan video, pengembangan sistem backend, atau konsultasi arsitektur web modern? Silakan hubungi via tautan di bawah.
+            </p>
+
+            <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+              <button type="button" id="copy-email-btn" onclick="copyEmail()" class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                <span id="email-text">Salin Email Kontak</span>
+              </button>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-zinc-300 px-5 py-2.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-teal-500 text-center">
+                Profil GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-zinc-200/60 dark:border-zinc-800/60 py-8">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center justify-between gap-4 sm:flex-row text-center sm:text-left">
+          <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm font-medium text-zinc-800 dark:text-zinc-200">
+            <a href="#about" class="hover:text-teal-500 transition py-1">Tentang</a>
+            <a href="#projects" class="hover:text-teal-500 transition py-1">Proyek</a>
+            <a href="#skills" class="hover:text-teal-500 transition py-1">Keahlian</a>
+            <a href="#contact" class="hover:text-teal-500 transition py-1">Kontak</a>
+          </div>
+          <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+            &copy; 2026 Iskan. Didesain dengan prinsip Spotlight &amp; Clean Architecture.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal Project Details -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" role="dialog" aria-modal="true">
+    <div class="relative w-full max-w-lg rounded-2xl bg-white p-5 sm:p-6 shadow-2xl dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+      <div class="flex items-center justify-between border-b border-zinc-100 dark:border-zinc-800 pb-3">
+        <h3 id="modal-title" class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-zinc-100">Judul Proyek</h3>
+        <button type="button" onclick="closeModal()" class="rounded-lg p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[44px] min-w-[44px] flex items-center justify-center">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div id="modal-content" class="mt-4 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-3 leading-relaxed">
+        <!-- Content injected dynamically -->
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button type="button" onclick="closeModal()" class="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-zinc-800 px-5 py-2 text-sm font-medium text-white hover:bg-zinc-700 dark:bg-zinc-700 dark:hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-teal-500">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript logic -->
+  <script>
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (htmlEl.classList.contains('dark')) {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    if (localStorage.getItem('theme') === 'light') {
+      htmlEl.classList.remove('dark');
+    } else {
+      htmlEl.classList.add('dark');
+    }
+
+    // Filter Logic
+    const filterTabs = document.querySelectorAll('.project-tab');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => {
+          t.classList.remove('bg-teal-500/10', 'text-teal-600', 'dark:text-teal-400', 'border-teal-500/20');
+          t.classList.add('border-transparent', 'text-zinc-600', 'dark:text-zinc-400');
+        });
+        tab.classList.remove('border-transparent', 'text-zinc-600', 'dark:text-zinc-400');
+        tab.classList.add('bg-teal-500/10', 'text-teal-600', 'dark:text-teal-400', 'border-teal-500/20');
+        
+        const filter = tab.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Modal Logic
+    const modal = document.getElementById('project-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContent = document.getElementById('modal-content');
+
+    const modalData = {
+      autoclipper: {
+        title: "Auto-Clipper v2 - Architecture Detail",
+        content: `
+          <p><strong>Spesifikasi Utama:</strong></p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>Speaker Tracking Engine:</strong> MediaPipe Active Speaker Landmarker tanpa modul berat (YOLO amputated).</li>
+            <li><strong>Subtitle Engine:</strong> Faster-Whisper (large-v3, CPU int8) dengan gaya visual eksklusif Pop &amp; Karaoke.</li>
+            <li><strong>Video Rendering:</strong> Single-pass FFmpeg dengan hardware/CPU acceleration ultrafast (720p 60fps).</li>
+            <li><strong>Layanan Background:</strong> Auto-start persistent service dengan monitoring performa tinggi.</li>
+            <li><strong>Aspek Rasio:</strong> Mendukung 9:16 portrait, 4:5, 3:4, 1:1, dan 16:9.</li>
+          </ul>
+        `
+      },
+      iskandrama: {
+        title: "Iskan Drama - Architecture Detail",
+        content: `
+          <p><strong>Spesifikasi Utama:</strong></p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>Video Player:</strong> Integrasi kustom ArtPlayer (MIT Licensed) menggantikan Plyr untuk performa tinggi.</li>
+            <li><strong>Backend Architecture:</strong> Server Express ringan yang menyajikan UI streaming SPA responsif.</li>
+            <li><strong>Infrastruktur:</strong> Cloudflare edge proxy dengan reverse caching teroptimasi.</li>
+            <li><strong>UX Optimization:</strong> Waktu muat halaman di bawah 1 detik dengan tata letak adaptif perangkat seluler.</li>
+          </ul>
+        `
+      }
+    };
+
+    function openModal(key) {
+      if (modalData[key]) {
+        modalTitle.textContent = modalData[key].title;
+        modalContent.innerHTML = modalData[key].content;
+        modal.classList.remove('hidden');
+      }
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+
+    // Copy Email Function
+    function copyEmail() {
+      const email = 'iskan@nendi.web.id';
+      navigator.clipboard.writeText(email).then(() => {
+        const textSpan = document.getElementById('email-text');
+        textSpan.textContent = 'Email Tersalin!';
+        setTimeout(() => {
+          textSpan.textContent = 'Salin Email Kontak';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

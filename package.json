@@ -1,0 +1,12 @@
+{
+  "name": "iskan-portfolio",
+  "version": "1.0.0",
+  "description": "Spotlight Portfolio for Iskan",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.3"
+  }
+}
